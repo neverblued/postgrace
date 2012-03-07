@@ -1,3 +1,7 @@
+;; (c) Дмитрий Пинский <demetrius@neverblued.info>
+;; Допускаю использование и распространение согласно
+;; LLGPL -> http://opensource.franz.com/preamble.html
+
 (defpackage #:postgrace-system
   (:use #:common-lisp #:asdf))
 
@@ -6,8 +10,9 @@
 (defsystem "postgrace"
   :description "Sugar over Postmodern"
   :version "0.1"
-  :author "Demetrius Conde <condemetrius@gmail.com>"
-  :depends-on (#:postmodern)
+  :author "Дмитрий Пинский <demetrius@neverblued.info>"
+  :depends-on (#:postmodern #:blackjack)
   :serial t
   :components ((:file "package")
-               (:file "postgrace")))
+               (:file "authentication")
+               (:file "dao")))
