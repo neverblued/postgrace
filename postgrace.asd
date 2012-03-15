@@ -7,8 +7,8 @@
 
 (in-package #:postgrace-system)
 
-(defsystem "postgrace"
-  :description "Sugar over Postmodern"
+(defsystem #:postgrace
+  :description "Postmodern overlay"
   :version "0.1"
   :author "Дмитрий Пинский <demetrius@neverblued.info>"
   :depends-on (#:postmodern #:blackjack)
