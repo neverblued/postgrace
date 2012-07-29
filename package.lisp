@@ -3,7 +3,7 @@
 ;; LLGPL -> http://opensource.franz.com/preamble.html
 
 (defpackage #:postgrace
-  (:use #:common-lisp #:postmodern
+  (:use #:common-lisp #:postmodern #:iterate
         #:blackjack)
   (:export
                                         ; authentication

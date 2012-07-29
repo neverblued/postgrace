@@ -8,13 +8,22 @@
 
 (defparameter user "postgres")
 
-(defparameter password-pathname "/home/lisp/.postgres.pwd")
+(defparameter password-pathname
+  ".postgres.pwd")
+
+(defun password-pathname ()
+  (merge-pathnames (user-homedir-pathname)
+                   password-pathname))
+
+(defun input-password-pathname ()
+  (format t "~%Где в домашней папке файл с паролем базы данных? - ")
+  (setf password-pathname (string (read))))
 
 (define-symbol-macro password
-    (do () ((probe-file password-pathname)
-            (values (pathname-content password-pathname)))
-      (format t "~%Введите путь к файлу с паролем базы данных: ")
-      (setf password-pathname (string (read)))))
+    (iter (awith (password-pathname)
+            (if (probe-file it)
+                (leave (values (pathname-content it)))
+                (input-password-pathname)))))
 
 (defmacro with-database (database &body body)
   `(aif ,database
@@ -23,4 +32,5 @@
                                postgrace::password
                                postgrace::host)
           ,@body)
-        (error "база данных не определена")))
+        (error 'database-connection-error
+               :message "база данных не определена")))
