@@ -11,7 +11,7 @@
   :description "Postmodern overlay"
   :version "0.1"
   :author "Дмитрий Пинский <demetrius@neverblued.info>"
-  :depends-on (#:postmodern #:blackjack)
+  :depends-on (#:postmodern #:simple-date #:blackjack)
   :serial t
   :components ((:file "package")
                (:file "authentication")

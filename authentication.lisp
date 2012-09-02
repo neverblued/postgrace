@@ -17,4 +17,5 @@
                                (postgrace::password)
                                postgrace::host)
           ,@body)
-        (error "база данных не определена")))
+        (error 'database-connection-error
+               :message "база данных не определена")))
