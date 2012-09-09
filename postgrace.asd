@@ -15,4 +15,5 @@
   :serial t
   :components ((:file "package")
                (:file "authentication")
+               (:file "count")
                (:file "dao")))
